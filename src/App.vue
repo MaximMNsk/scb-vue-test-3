@@ -1,17 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <b-navbar type="secondary" variant="secondary" text-variant="white">
+      <b-navbar-nav class="col-12 mx-auto">
+        <b-nav-item class="col-6 text-left">Dictionary</b-nav-item>
+        <b-nav-item class="col-6 text-right">Stored</b-nav-item>
+      </b-navbar-nav>
+    </b-navbar>
+      <transition name="bounce">
+        <remote-data></remote-data>
+        <stored-data></stored-data>
+      </transition>
+    <footer>
+      <b-jumbotron bg-variant="secondary" class="jumbotron-fluid"></b-jumbotron>
+    </footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import RemoteData from './components/RemoteData.vue'
+import StoredData from './components/StoredData.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    RemoteData,
+    StoredData
+  },
+  created(){
+    document.title = 'Vue test for SCB';
   }
 }
 </script>
@@ -19,10 +35,11 @@ export default {
 <style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+.nav-link{
+  color: lightgray;
+}
+.nav-link:hover{
+  color: white;
 }
 </style>
