@@ -1,5 +1,5 @@
 <template>
-    <div>asdasd</div>
+    <div class="w-50 border rounded p-3 m-3 mx-auto">asdasd</div>
 </template>
 
 
