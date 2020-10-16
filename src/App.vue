@@ -7,8 +7,10 @@
       </b-navbar-nav>
     </b-navbar>
       <transition name="bounce">
-        <remote-data v-if="isRemoteSearch" :searchDirection="isRemoteSearch"></remote-data>
-        <stored-data v-else></stored-data>
+        <keep-alive>
+          <remote-data v-if="isRemoteSearch" :searchDirection="isRemoteSearch"></remote-data>
+          <stored-data v-else></stored-data>
+        </keep-alive>
       </transition>
     <footer>
       <b-jumbotron bg-variant="secondary" class="jumbotron-fluid"></b-jumbotron>

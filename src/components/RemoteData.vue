@@ -1,10 +1,10 @@
 <template>
-    <div class="main-container border rounded p-2 m-3 mx-auto w-75 d-flex justify-content-around">
+    <div class="main-container border rounded p-2 m-3 mx-auto w-75 d-flex justify-content-around shadow">
         <div class="search-container m-2 ">
             <search-panel :searchDirection="searchDirection" @searchWord="makeSearch"></search-panel>
         </div>
         <div class="result-container m-2 ">
-            {{ remoteSearchWordResult }}
+                <searched-item v-for="resultItem in finalResult" :key="resultItem.meta.uuid" :itemData="resultItem"></searched-item>
         </div>
     </div>
 </template>
@@ -14,13 +14,14 @@
 <script>
 
     import SearchPanel from './SearchPanel.vue';
+    import SearchedItem from './SearchedItem.vue';
     import axios from 'axios';
-
+    import {debounce} from 'vue-debounce';
 
     export default {
         name: 'RemoteData',
         components:{
-            SearchPanel
+            SearchPanel, SearchedItem
         },
         props: {
             searchDirection: {
@@ -33,7 +34,9 @@
                 url: "https://dictionaryapi.com/api/v3/references/sd4/json/",
                 apiKey: "56f99054-5a45-44ec-a5a3-06fe23eea102",
                 wordCount: 10,
-                remoteSearchWordResult: null
+                remoteSearchWordResult: null,
+                finalResult: null,
+                debouncedParseRemoteData: Function
             }
         },
         methods:{
@@ -45,8 +48,20 @@
                 .catch(error => {
                     console.log(error);
                 });            
-                console.log(word);
+                this.debouncedParseRemoteData(word);
+            },
+            parseRemoteData(remoteSearchWord) {
+                if(this.remoteSearchWordResult && this.remoteSearchWordResult.length>0 && this.remoteSearchWordResult[0].meta){
+                    this.finalResult = (remoteSearchWord.length>0) ? this.sortAndTrimData(this.remoteSearchWordResult) : null;
+                }
+            },
+            sortAndTrimData( arrObj ) {
+                var sortedArr = arrObj.sort((a,b) => a.meta.id > b.meta.id ? 1 : -1);
+                return sortedArr.slice(0, this.wordCount);
             }
+        },
+        created: function () {
+            this.debouncedParseRemoteData = debounce(this.parseRemoteData, 300);
         }
     }
     
