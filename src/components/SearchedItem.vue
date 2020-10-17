@@ -73,7 +73,6 @@ export default {
             try {
                 localStorage.removeItem('dictItems');
                 localStorage.setItem('dictItems', JSON.stringify(item));
-                console.info(item);
                 // this.check();
             } catch (error) {
                 localStorage.removeItem('dictItems');
