@@ -4,7 +4,7 @@
             <search-panel :searchDirection="searchDirection" @searchWord="makeSearch"></search-panel>
         </div>
         <div class="result-container m-2 ">
-                <searched-item v-for="resultItem in finalResult" :key="resultItem.meta.uuid" :itemData="resultItem"></searched-item>
+                <searched-item v-for="resultItem in finalResult" :key="resultItem.meta.uuid" :itemData="resultItem" :storedItems="storedItems"></searched-item>
         </div>
     </div>
 </template>
@@ -36,7 +36,8 @@
                 wordCount: 10,
                 remoteSearchWordResult: null,
                 finalResult: null,
-                debouncedParseRemoteData: Function
+                debouncedParseRemoteData: Function,
+                storedItems: null
             }
         },
         methods:{
@@ -48,6 +49,10 @@
                 .catch(error => {
                     console.log(error);
                 });            
+                // localStorage.removeItem('dictItems');
+                let stdItems = localStorage.getItem('dictItems');
+                // console.info(storedItems);
+                this.storedItems = ( stdItems ) ? JSON.parse(stdItems) : null;
                 this.debouncedParseRemoteData(word);
             },
             parseRemoteData(remoteSearchWord) {
@@ -60,7 +65,7 @@
                 return sortedArr.slice(0, this.wordCount);
             }
         },
-        created: function () {
+        created: function()  {
             this.debouncedParseRemoteData = debounce(this.parseRemoteData, 300);
         }
     }

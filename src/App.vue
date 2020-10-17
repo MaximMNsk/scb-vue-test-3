@@ -13,7 +13,7 @@
         </keep-alive>
       </transition>
     <footer>
-      <b-jumbotron bg-variant="secondary" class="jumbotron-fluid"></b-jumbotron>
+      <b-jumbotron bg-variant="secondary" class="jumbotron-fluid custom-footer"></b-jumbotron>
     </footer>
   </div>
 </template>
@@ -47,6 +47,9 @@
 <style>
   #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
+  }
+  .custom-footer{
+    margin-bottom: 0px !important;
   }
   .nav-link{
     color: lightgray;
