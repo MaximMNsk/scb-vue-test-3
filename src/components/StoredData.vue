@@ -71,7 +71,13 @@
         }
         this.searchParams = itemsFl;
       },
-      reInitData(){
+      initModule(){
+        this.getStoredItems();
+        this.filteredByWord = this.storedItems;
+        this.filteredByFl = this.storedItems;
+        this.getUniqueFl();
+      },
+      reInitModule(){
         this.getStoredItems();
         this.filterByWord(this.searchWord);
         this.filterByFl(this.searchFl);
@@ -79,12 +85,9 @@
       }
     },
     created(){
-      this.getStoredItems();
-      this.filteredByWord = this.storedItems;
-      this.filteredByFl = this.storedItems;
-      this.getUniqueFl();
+      this.initModule();
       eventHub.$on('changeStored', () => {
-        this.reInitData();
+        this.reInitModule();
       });
     }
 }
