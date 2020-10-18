@@ -9,6 +9,8 @@ Vue.use(BootstrapVue);
 
 Vue.config.productionTip = false;
 
+export const eventHub = new Vue();
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')

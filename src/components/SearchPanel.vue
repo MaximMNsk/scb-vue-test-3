@@ -6,7 +6,9 @@
                 <span class="input-group-text">&#128269;</span>
             </div>
         </div>
-        <div v-if="!searchDirection">Additional parameters:</div>
+        <b-form-checkbox-group id="checkbox-group" v-model="checkFl" name="checkFl" class="d-flex flex-column">
+            <b-form-checkbox v-for="param in searchParams" :value="param" :key="param" class="add-params">{{ param }}</b-form-checkbox>
+        </b-form-checkbox-group>
     </div>
 </template>
 
@@ -18,19 +20,29 @@
     name: 'SearchPanel',
     data(){
         return{
-            typeWord: ""
+            typeWord: "",
+            checkFl: [],
         }
     },
     props: {
         searchDirection: {
             type: Boolean,
             default(){}
+        },
+        searchParams: {
+            default(){}
         }
     },
     watch: {
         typeWord: function(){
             this.$emit("searchWord", this.typeWord);
+        },
+        checkFl: function(){
+            this.$emit("addSearch", this.checkFl);
         }
+    },
+    created(){
+        this.checkFl = this.searchParams;
     }
   }
 
@@ -38,5 +50,7 @@
 
 
 <style>
-
+    .add-params{
+        color: grey;
+    }
 </style>

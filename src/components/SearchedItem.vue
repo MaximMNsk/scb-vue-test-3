@@ -20,6 +20,9 @@
 
 
 <script>
+
+import { eventHub } from '../main';
+
 export default {
     name: 'SearchedItem',
     data(){
@@ -56,6 +59,8 @@ export default {
 
             this.save( itemsToSave );
             this.toggleFlag();
+
+            eventHub.$emit('changeStored');
         },
         unsaveItem(){
             let savedItems = JSON.parse(localStorage.getItem('dictItems'));
@@ -65,6 +70,7 @@ export default {
                 this.save( savedItems );
                 this.toggleFlag();
             }
+            eventHub.$emit('changeStored');
         },
         toggleFlag(){
             return this.isSavedFlag = !this.isSavedFlag;
@@ -73,7 +79,6 @@ export default {
             try {
                 localStorage.removeItem('dictItems');
                 localStorage.setItem('dictItems', JSON.stringify(item));
-                // this.check();
             } catch (error) {
                 localStorage.removeItem('dictItems');
                 console.info(error);
@@ -81,14 +86,13 @@ export default {
         }
     },
     created() {
-            let currentItemUUID = this.itemData.meta.uuid;
-            if( this.storedItems ){
-                let obj = this.storedItems.find(item => item.UUID === currentItemUUID);
-                if( obj ){
-                    this.toggleFlag();
-                }
-
+        let currentItemUUID = this.itemData.meta.uuid;
+        if( this.storedItems ){
+            let obj = this.storedItems.find(item => item.UUID === currentItemUUID);
+            if( obj ){
+                this.toggleFlag();
             }
+        }
     }
 }
 </script>

@@ -13,7 +13,7 @@
         </keep-alive>
       </transition>
     <footer>
-      <b-jumbotron bg-variant="secondary" class="jumbotron-fluid custom-footer"></b-jumbotron>
+      <!-- <b-jumbotron bg-variant="secondary" class="jumbotron-fluid custom-footer"></b-jumbotron> -->
     </footer>
   </div>
 </template>
