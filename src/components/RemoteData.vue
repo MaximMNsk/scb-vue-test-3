@@ -49,9 +49,7 @@
                 .catch(error => {
                     console.log(error);
                 });            
-                // localStorage.removeItem('dictItems');
                 let stdItems = localStorage.getItem('dictItems');
-                // console.info(storedItems);
                 this.storedItems = ( stdItems ) ? JSON.parse(stdItems) : null;
                 this.debouncedParseRemoteData(word);
             },
