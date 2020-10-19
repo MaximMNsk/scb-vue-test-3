@@ -25,7 +25,7 @@
 
 1. NodeJS (https://nodejs.org/en/)
 2. npm
-3. Vue CLI
+3. Vue CLI (npm i -g @vue/cli)
 
 ### Actions
 
