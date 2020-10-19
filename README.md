@@ -31,9 +31,9 @@
 
 1. Install required applications 
 2. Clone repo and place content in `/some/your/folder`
-3. Go to folder in command line ` cd /some/your/folder/project-folder`
+3. Go to folder in command line ` cd /some/your/folder/scb-vue-test-3`
 4. Install dependencies via `npm install`
-5. Go to project build folder in command line ` cd /some/your/folder/project-folder/dist`
+5. Go to project build folder in command line ` cd /some/your/folder/scb-vue-test-3/dist`
 6. Type `npm run serve` in command line and press "Enter"
 7. Project will be able at `http://127.0.0.1:8080`
 8. Please enjoy and have fun
