@@ -23,13 +23,17 @@
 
 ### Requirements
 
-1. NodeJS
+1. NodeJS (https://nodejs.org/en/)
 2. npm
+3. Vue CLI
 
 ### Actions
 
-1. Download dist and place content in `/some/your/folder`
-2. Go to folder in command line ` cd /some/your/folder`
-3. Type `npm run serve` in command line and press "Enter"
-4. Project will be able at `http://127.0.0.1:8080`
-5. Please enjoy and have fun
+1. Install required applications 
+2. Clone repo and place content in `/some/your/folder`
+3. Go to folder in command line ` cd /some/your/folder/project-folder`
+4. Install dependencies via `npm install`
+5. Go to project build folder in command line ` cd /some/your/folder/project-folder/dist`
+6. Type `npm run serve` in command line and press "Enter"
+7. Project will be able at `http://127.0.0.1:8080`
+8. Please enjoy and have fun
