@@ -31,7 +31,7 @@
     },
     data(){
       return{
-        storedItems: null,
+        storedItems: Array,
         searchParams: null,
         searchWord: null,
         searchFl: null,
@@ -43,7 +43,7 @@
     methods:{
       getStoredItems(){
         let stdItems = localStorage.getItem('dictItems');
-        this.storedItems = ( stdItems ) ? JSON.parse(stdItems) : null;
+        this.storedItems = ( stdItems ) ? JSON.parse(stdItems) : [];
       },
       filterByWord(word){
         this.searchWord = word;
