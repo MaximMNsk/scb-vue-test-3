@@ -30,6 +30,6 @@
 
 1. Download dist and place content in `/some/your/folder`
 2. Go to folder in command line ` cd /some/your/folder`
-3. Type `npm run serve` in command line
+3. Type `npm run serve` in command line and press "Enter"
 4. Project will be able at `http://127.0.0.1:8080`
 5. Please enjoy and have fun
