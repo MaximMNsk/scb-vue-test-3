@@ -7,7 +7,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 Vue.use(BootstrapVue);
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 
 export const eventHub = new Vue();
 
