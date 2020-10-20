@@ -57,12 +57,12 @@
   .nav-link:hover{
     color: white;
   }
-  .bounce-enter-active,
-  .bounce-leave-active {
+  .bounce-enter-active {
     animation: bounce-in .5s;
+    display: none;
   }
-  .bounce-leave-to,
-  .bounce-enter {
+  .bounce-leave-active {
+      animation: bounce-in .5s reverse;
       display: none;
   }
   @keyframes bounce-in {
