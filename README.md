@@ -23,9 +23,9 @@
 
 ### Requirements
 
-1. NodeJS (https://nodejs.org/en/)
-2. npm
-3. Vue CLI (npm i -g @vue/cli)
+1. NodeJS+npm (https://nodejs.org/en/)
+2. Vue CLI (npm i -g @vue/cli)
+3. Or other web-server
 
 ### Actions
 
@@ -37,3 +37,5 @@
 6. Type `npm run serve` in command line and press "Enter"
 7. Project will be able at `http://127.0.0.1:8080`
 8. Please enjoy and have fun
+
+For other web-server just place `dist` content to root directory...
